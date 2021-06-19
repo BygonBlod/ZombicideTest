@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import model.Perso;
 
 public class PersoDB {
 	static Connection connection=null;
@@ -19,6 +22,17 @@ public class PersoDB {
 		ResultSet result=prepare.executeQuery();
 		while(result.next()){
 			res=result.getString("NomPerso");
+		}
+		return res;
+	}
+	
+	public ArrayList<Perso> getPersos() throws SQLException{
+		ArrayList<Perso> res=new ArrayList<Perso>();
+		String sql="SELECT * from perso";
+		PreparedStatement prepare=connection.prepareStatement(sql);
+		ResultSet result=prepare.executeQuery();
+		while(result.next()){
+			res.add(new Perso(result.getString("NomPerso"),result.getString("comp1")));
 		}
 		return res;
 	}

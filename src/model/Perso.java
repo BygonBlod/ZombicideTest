@@ -19,22 +19,23 @@ public class Perso {
 	CarteTorse Torse;
 	CarteMain[] deck=new CarteMain [5];
 	
-	public Perso(String namePerso) {
+	public Perso(String namePerso,String comp1) {
 		this.namePerso=namePerso;
 		this.NbVie=3;
 		this.Xp=0;
-		CompetenceDB comp=new CompetenceDB();
+		ListeComp[0]=comp1;
+		/*CompetenceDB comp=new CompetenceDB();
 		try {
 			ListeComp[0]=comp.getFirst(namePerso);
 		} catch (SQLException e) {
 			System.out.println("n'a pas de compétences");
-		}
-		CarteMainDB testCarte=new CarteMainDB();
+		}*/
+		/*CarteMainDB testCarte=new CarteMainDB();
 		try {
 			MainGauche=testCarte.getAleaCarte();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	public int getNiveaux() {
@@ -106,6 +107,7 @@ public class Perso {
 		CompetenceDB comp=new CompetenceDB();
 		try {
 			ListeComp[1]=comp.getSecond(namePerso);
+			this.NbAction+=1;
 		} catch (SQLException e) {
 			System.out.println("n'a pas de compétences");
 		}		

@@ -19,11 +19,9 @@ public class CarteMainDB {
 		String sql="Select * from cartemain";
 		PreparedStatement prepare=connection.prepareStatement(sql);
 		ResultSet result=prepare.executeQuery();
-		int i=0;
 		while(result.next()){
-			System.out.println(i+" : "+result.getString("nomcartemain")+" : "+result.getInt("distance")+" : "+result.getInt("nbdes")+" : "+result.getInt("scorede")+" : "+result.getInt("degat")+" : "+result.getInt("porte")+" : "+result.getString("text"));
+			//System.out.println(i+" : "+result.getString("nomcartemain")+" : "+result.getInt("distance")+" : "+result.getInt("nbdes")+" : "+result.getInt("scorede")+" : "+result.getInt("degat")+" : "+result.getInt("porte")+" : "+result.getString("text"));
 			res.add(new CarteMain(result.getString("nomcartemain"),result.getInt("distance"),result.getInt("nbdes"),result.getInt("scorede"),result.getInt("degat"),result.getInt("porte"),result.getInt("magic"),result.getString("text")));
-			i++;
 		}
 		return res;
 	}
